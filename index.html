@@ -49,11 +49,6 @@ tailwind.config = {
   .lightbox.active { display: flex; }
   .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
   .amenity-card { background: rgba(26,42,74,0.5); border: 1px solid rgba(201,169,110,0.1); border-radius: 16px; }
-  .fp-tab { color: #9ca3af; border: 1px solid transparent; padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s; cursor: pointer; }
-  .fp-tab.active { color: #c9a96e; border-color: #c9a96e; background: rgba(201,169,110,0.08); }
-  .fp-tab:hover { color: #d4bb8a; }
-  .fp-panel { display: none; }
-  .fp-panel.active { display: block; }
   .mobile-menu { display: none; }
   .mobile-menu.open { display: block; }
   @keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.4); } 70% { box-shadow: 0 0 0 12px rgba(201,169,110,0); } }
@@ -104,8 +99,8 @@ tailwind.config = {
       <div class="gold-line mb-6 animate-in"></div>
       <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-in delay-1">Breathtaking Bay Views in Edgewater</h1>
       <p class="text-xl text-gray-300 font-light mb-4 animate-in delay-2">Luxury apartments with panoramic Biscayne Bay, city skyline, and ocean views — minutes from Downtown Miami and South Beach.</p>
-      <a href="tel:3055710000" class="text-gold text-2xl tracking-wider font-bold block mb-8 animate-in delay-3">(305) 571-0000</a>
-      <div class="flex flex-col sm:flex-row gap-4 animate-in delay-4">
+      <a href="tel:3055710000" class="text-gold text-2xl tracking-wider font-bold block mb-8 text-center animate-in delay-3">(305) 571-0000</a>
+      <div class="flex flex-col sm:flex-row gap-4 items-center animate-in delay-4">
         <a href="#contact" class="px-8 py-3.5 bg-gold text-sky-dark font-semibold rounded-full hover:bg-gold-light transition text-center pulse-cta">Schedule a Tour</a>
         <a href="#views" class="px-8 py-3.5 border border-white/20 text-white rounded-full hover:border-gold hover:text-gold transition text-center">Explore Views</a>
       </div>
@@ -149,20 +144,20 @@ tailwind.config = {
       <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Views That Define Luxury</h2>
       <p class="text-gray-400 max-w-2xl mx-auto">From every floor, 22 Skyview delivers sweeping panoramic views of Biscayne Bay, the city skyline, and beyond.</p>
     </div>
-    <div class="grid md:grid-cols-3 gap-6">
+    <div class="space-y-6">
       <div class="gallery-item cursor-pointer animate-in delay-1" onclick="openLightbox(this)">
-        <div class="relative h-56 md:h-64"><img src="images/view-southwest.jpg" alt="Southwest View">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Southwest</p><p class="text-gray-300 text-sm">Downtown & Brickell Skyline</p></div></div>
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-southwest.jpg" alt="Southwest View" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Southwest — Downtown &amp; Brickell Skyline</p></div></div>
         </div>
       </div>
       <div class="gallery-item cursor-pointer animate-in delay-2" onclick="openLightbox(this)">
-        <div class="relative h-56 md:h-64"><img src="images/view-east.jpg" alt="East View">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">East</p><p class="text-gray-300 text-sm">Biscayne Bay & Miami Beach</p></div></div>
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-east.jpg" alt="East View" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">East — Biscayne Bay &amp; Miami Beach</p></div></div>
         </div>
       </div>
       <div class="gallery-item cursor-pointer animate-in delay-3" onclick="openLightbox(this)">
-        <div class="relative h-56 md:h-64"><img src="images/view-northwest.jpg" alt="Northwest View">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Northwest</p><p class="text-gray-300 text-sm">Edgewater & Upper Bay</p></div></div>
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-northwest.jpg" alt="Northwest View" class="w-full h-full object-cover">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Northwest — Edgewater &amp; Upper Bay</p></div></div>
         </div>
       </div>
     </div>
@@ -220,27 +215,13 @@ tailwind.config = {
       <div class="gold-line mx-auto mb-6"></div>
       <p class="text-gold font-display italic text-lg mb-2">Residences</p>
       <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Floor Plans</h2>
-      <p class="text-gray-400">Choose from a range of thoughtfully designed layouts</p>
+      <p class="text-gray-400">Thoughtfully designed layouts with stunning views from every unit</p>
     </div>
-    <div class="flex flex-wrap justify-center gap-3 mb-12 animate-in">
-      <button class="fp-tab active" onclick="showPlan('building')">Building Overview</button>
-      <button class="fp-tab" onclick="showPlan('unit1')">Unit 1</button>
-      <button class="fp-tab" onclick="showPlan('unit2')">Unit 2</button>
-      <button class="fp-tab" onclick="showPlan('unit3')">Unit 3</button>
-      <button class="fp-tab" onclick="showPlan('unit4')">Unit 4</button>
-      <button class="fp-tab" onclick="showPlan('unit5')">Unit 5</button>
-      <button class="fp-tab" onclick="showPlan('unit6')">Unit 6</button>
-      <button class="fp-tab" onclick="showPlan('unit7')">Unit 7</button>
-    </div>
-    <div class="max-w-4xl mx-auto">
-      <div id="plan-building" class="fp-panel active animate-in"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="images/floorplan-building.png" alt="Building Floor Plan" class="mx-auto max-h-[500px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit1" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c1.png" alt="Unit 1" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit2" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c2.png" alt="Unit 2" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit3" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c3.png" alt="Unit 3" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit4" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c4.png" alt="Unit 4" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit5" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c5.png" alt="Unit 5" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit6" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c6.png" alt="Unit 6" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
-      <div id="plan-unit7" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c7.png" alt="Unit 7" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+    <div class="max-w-4xl mx-auto animate-in">
+      <div class="bg-sky/30 border border-gold/10 rounded-xl p-4 md:p-8 text-center">
+        <img src="images/floorplan-building.png" alt="22 Skyview Floor Plans" class="mx-auto w-full max-h-[600px] object-contain cursor-pointer" onclick="openLightbox(this)">
+        <p class="text-gray-500 text-sm mt-4">Tap to enlarge</p>
+      </div>
     </div>
   </div>
 </section>
@@ -327,7 +308,7 @@ tailwind.config = {
 
 <!-- Mobile Phone Bar -->
 <div class="fixed bottom-0 left-0 right-0 z-50 bg-gold p-3 text-center hidden mobile-phone-bar md:hidden">
-  <a href="tel:3055710000" class="text-sky-dark font-bold text-lg tracking-wider flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call (305) 571-0000</a>
+  <a href="tel:3055710000" class="text-sky-dark font-bold text-lg tracking-wider flex items-center justify-center gap-2 w-full text-center"><i class="fa-solid fa-phone"></i> Call (305) 571-0000</a>
 </div>
 
 <!-- Lightbox -->
@@ -349,7 +330,6 @@ menuBtn.addEventListener('click', () => {
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
 document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-function showPlan(id) { document.querySelectorAll('.fp-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.fp-tab').forEach(t => t.classList.remove('active')); document.getElementById('plan-' + id).classList.add('active'); event.target.classList.add('active'); }
 function openLightbox(el) { const img = el.tagName === 'IMG' ? el : el.querySelector('img'); if (!img) return; document.getElementById('lbImg').src = img.src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
