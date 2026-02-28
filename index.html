@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22 Skyview — Luxury Apartments in Edgewater, Miami</title>
+<meta name="description" content="22 Skyview offers luxury rental apartments with breathtaking Biscayne Bay views in Miami's vibrant Edgewater neighborhood. Studios, 1 & 2 bedroom residences.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        sky: { dark: '#0a1628', DEFAULT: '#1a2a4a', light: '#2a3d5c' },
+        gold: { DEFAULT: '#c9a96e', light: '#d4bb8a', dark: '#b8944f' },
+        surface: '#111b2e',
+      },
+      fontFamily: {
+        display: ['Cormorant Garamond', 'serif'],
+        body: ['DM Sans', 'sans-serif'],
+      },
+      maxWidth: { site: '1200px' }
+    }
+  }
+}
+</script>
+<style>
+  body { font-family: 'DM Sans', sans-serif; background: #0a1628; }
+  .font-display { font-family: 'Cormorant Garamond', serif; }
+  header { transition: all 0.4s ease; padding-top: 1.25rem; padding-bottom: 1.25rem; }
+  header.scrolled { padding-top: 0.75rem; padding-bottom: 0.75rem; background: rgba(10,22,40,0.97); backdrop-filter: blur(16px); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+  .animate-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .animate-in.visible { opacity: 1; transform: translateY(0); }
+  .animate-in.delay-1 { transition-delay: 0.1s; }
+  .animate-in.delay-2 { transition-delay: 0.2s; }
+  .animate-in.delay-3 { transition-delay: 0.3s; }
+  .animate-in.delay-4 { transition-delay: 0.4s; }
+  .hero-overlay { background: linear-gradient(135deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.4) 50%, rgba(10,22,40,0.7) 100%); }
+  .card-hover { transition: transform 0.4s ease, box-shadow 0.4s ease; }
+  .card-hover:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(201,169,110,0.12); }
+  .gold-line { width: 60px; height: 2px; background: linear-gradient(90deg, #c9a96e, #d4bb8a); }
+  .gallery-item { overflow: hidden; border-radius: 12px; }
+  .gallery-item img { transition: transform 0.6s ease; width: 100%; height: 100%; object-fit: cover; }
+  .gallery-item:hover img { transform: scale(1.05); }
+  .lightbox { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.92); align-items: center; justify-content: center; cursor: pointer; }
+  .lightbox.active { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
+  .amenity-card { background: rgba(26,42,74,0.5); border: 1px solid rgba(201,169,110,0.1); border-radius: 16px; }
+  .fp-tab { color: #9ca3af; border: 1px solid transparent; padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.875rem; font-weight: 500; transition: all 0.3s; cursor: pointer; }
+  .fp-tab.active { color: #c9a96e; border-color: #c9a96e; background: rgba(201,169,110,0.08); }
+  .fp-tab:hover { color: #d4bb8a; }
+  .fp-panel { display: none; }
+  .fp-panel.active { display: block; }
+  .mobile-menu { display: none; }
+  .mobile-menu.open { display: block; }
+  @keyframes pulse-gold { 0%, 100% { box-shadow: 0 0 0 0 rgba(201,169,110,0.4); } 70% { box-shadow: 0 0 0 12px rgba(201,169,110,0); } }
+  .pulse-cta { animation: pulse-gold 2s infinite; }
+  @media (max-width: 768px) { .mobile-phone-bar { display: flex !important; } }
+</style>
+</head>
+<body class="text-gray-300">
+
+<!-- Header -->
+<header id="header" class="fixed top-0 w-full z-50 bg-sky-dark/80 backdrop-blur-sm">
+  <div class="max-w-site mx-auto px-6 flex items-center justify-between">
+    <a href="#home"><img src="images/logo.png" alt="22 Skyview" class="h-8 md:h-10"></a>
+    <div class="hidden md:flex flex-col items-end">
+      <a href="tel:3055710000" class="text-gold text-sm tracking-wider font-bold">(305) 571-0000</a>
+      <a href="mailto:info@22skyview.com" class="text-gray-400 text-xs tracking-wider hover:text-gold transition">info@22skyview.com</a>
+    </div>
+    <nav class="hidden md:flex items-center gap-6 text-sm tracking-wide">
+      <a href="#about" class="text-white/90 hover:text-gold transition">About</a>
+      <a href="#views" class="text-white/90 hover:text-gold transition">Views</a>
+      <a href="#amenities" class="text-white/90 hover:text-gold transition">Amenities</a>
+      <a href="#floorplans" class="text-white/90 hover:text-gold transition">Floor Plans</a>
+      <a href="#contact" class="text-white/90 hover:text-gold transition">Contact</a>
+      <a href="brochure.pdf" target="_blank" class="px-5 py-2 border border-gold text-gold hover:bg-gold hover:text-sky-dark rounded-full transition text-sm font-semibold">Brochure</a>
+    </nav>
+    <button id="menuBtn" class="md:hidden text-white text-2xl"><i class="fa-solid fa-bars"></i></button>
+  </div>
+  <div id="mobileMenu" class="mobile-menu md:hidden bg-sky-dark/95 backdrop-blur-md mx-4 mt-2 rounded-xl p-6 space-y-4 text-center">
+    <a href="#about" class="block text-white/90 hover:text-gold py-2">About</a>
+    <a href="#views" class="block text-white/90 hover:text-gold py-2">Views</a>
+    <a href="#amenities" class="block text-white/90 hover:text-gold py-2">Amenities</a>
+    <a href="#floorplans" class="block text-white/90 hover:text-gold py-2">Floor Plans</a>
+    <a href="#contact" class="block text-white/90 hover:text-gold py-2">Contact</a>
+    <a href="brochure.pdf" target="_blank" class="block text-gold font-semibold py-2">Download Brochure</a>
+    <div class="border-t border-white/10 pt-4 space-y-2">
+      <a href="tel:3055710000" class="block text-gold font-bold tracking-wider">(305) 571-0000</a>
+      <a href="mailto:info@22skyview.com" class="block text-gray-400 text-sm">info@22skyview.com</a>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section id="home" class="relative min-h-screen flex items-center overflow-hidden">
+  <img src="images/hero-skyline.jpg" alt="Biscayne Bay Views" class="absolute inset-0 w-full h-full object-cover" style="object-position: center 30%;">
+  <div class="hero-overlay absolute inset-0"></div>
+  <div class="max-w-site mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center w-full pt-24 pb-16">
+    <div>
+      <div class="gold-line mb-6 animate-in"></div>
+      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-in delay-1">Breathtaking Bay Views in Edgewater</h1>
+      <p class="text-xl text-gray-300 font-light mb-4 animate-in delay-2">Luxury apartments with panoramic Biscayne Bay, city skyline, and ocean views — minutes from Downtown Miami and South Beach.</p>
+      <a href="tel:3055710000" class="text-gold text-2xl tracking-wider font-bold block mb-8 animate-in delay-3">(305) 571-0000</a>
+      <div class="flex flex-col sm:flex-row gap-4 animate-in delay-4">
+        <a href="#contact" class="px-8 py-3.5 bg-gold text-sky-dark font-semibold rounded-full hover:bg-gold-light transition text-center pulse-cta">Schedule a Tour</a>
+        <a href="#views" class="px-8 py-3.5 border border-white/20 text-white rounded-full hover:border-gold hover:text-gold transition text-center">Explore Views</a>
+      </div>
+    </div>
+    <div class="hidden md:flex justify-center">
+      <img src="images/building-rendering.png" alt="22 Skyview Building" class="max-h-[500px] drop-shadow-2xl animate-in delay-2">
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"><i class="fa-solid fa-chevron-down text-gold/60 text-xl"></i></div>
+</section>
+
+<!-- About -->
+<section id="about" class="py-24 px-6">
+  <div class="max-w-site mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div class="animate-in">
+      <div class="gold-line mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Edgewater Living</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">Your Miami Urban<br>Experience Awaits</h2>
+      <p class="text-gray-400 leading-relaxed text-lg mb-6">22 Skyview is a luxury high-rise in the heart of Edgewater, one of Miami's most sought-after waterfront neighborhoods. Rising above the bay, every residence offers a unique perspective of the Miami skyline, Biscayne Bay, and the Atlantic Ocean.</p>
+      <p class="text-gray-400 leading-relaxed text-lg mb-8">Located at 425 NE 22nd Street, you're minutes from the Design District's world-class shopping, Midtown's dining scene, and the energy of Downtown Miami — with South Beach just across the causeway.</p>
+      <div class="grid grid-cols-3 gap-6">
+        <div class="text-center"><p class="font-display text-3xl md:text-4xl font-bold text-gold">22</p><p class="text-gray-500 text-sm mt-1">Stories</p></div>
+        <div class="text-center"><p class="font-display text-3xl md:text-4xl font-bold text-gold">360°</p><p class="text-gray-500 text-sm mt-1">Views</p></div>
+        <div class="text-center"><p class="font-display text-3xl md:text-4xl font-bold text-gold">5</p><p class="text-gray-500 text-sm mt-1">Min to Downtown</p></div>
+      </div>
+    </div>
+    <div class="animate-in delay-2 relative">
+      <img src="images/panoramic.jpg" alt="Panoramic Bay View" class="rounded-xl shadow-2xl w-full">
+      <div class="absolute -bottom-4 -left-4 w-24 h-24 border-2 border-gold/30 rounded-xl -z-10"></div>
+      <div class="absolute -top-4 -right-4 w-24 h-24 border-2 border-gold/30 rounded-xl -z-10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Views -->
+<section id="views" class="py-24 px-6 bg-surface/50">
+  <div class="max-w-site mx-auto">
+    <div class="text-center mb-16 animate-in">
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Panoramic</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Views That Define Luxury</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">From every floor, 22 Skyview delivers sweeping panoramic views of Biscayne Bay, the city skyline, and beyond.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="gallery-item cursor-pointer animate-in delay-1" onclick="openLightbox(this)">
+        <div class="relative h-56 md:h-64"><img src="images/view-southwest.jpg" alt="Southwest View">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Southwest</p><p class="text-gray-300 text-sm">Downtown & Brickell Skyline</p></div></div>
+        </div>
+      </div>
+      <div class="gallery-item cursor-pointer animate-in delay-2" onclick="openLightbox(this)">
+        <div class="relative h-56 md:h-64"><img src="images/view-east.jpg" alt="East View">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">East</p><p class="text-gray-300 text-sm">Biscayne Bay & Miami Beach</p></div></div>
+        </div>
+      </div>
+      <div class="gallery-item cursor-pointer animate-in delay-3" onclick="openLightbox(this)">
+        <div class="relative h-56 md:h-64"><img src="images/view-northwest.jpg" alt="Northwest View">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Northwest</p><p class="text-gray-300 text-sm">Edgewater & Upper Bay</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Amenities -->
+<section id="amenities" class="py-24 px-6">
+  <div class="max-w-site mx-auto">
+    <div class="text-center mb-16 animate-in">
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Lifestyle</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Premium Amenities</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Everything you need to live well, right at home.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="amenity-card card-hover p-6 animate-in delay-1">
+        <img src="images/pool.jpg" alt="Pool" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Bayfront Pool Deck</h3>
+        <p class="text-gray-400 text-sm">Spectacular Biscayne Bay views from the large pool deck — swim and soak up the sun with the Miami skyline as your backdrop.</p>
+      </div>
+      <div class="amenity-card card-hover p-6 animate-in delay-2">
+        <img src="images/gym.jpg" alt="Fitness Center" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Fitness Center</h3>
+        <p class="text-gray-400 text-sm">State-of-the-art equipment with strength, cardio, and aerobics options — your personal gym without ever leaving home.</p>
+      </div>
+      <div class="amenity-card card-hover p-6 animate-in delay-3">
+        <img src="images/sauna.jpg" alt="Sauna & Steam" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Sauna & Steam Room</h3>
+        <p class="text-gray-400 text-sm">Relax with dry heat sauna and moist steam room — improve circulation and unwind after a long day.</p>
+      </div>
+      <div class="amenity-card card-hover p-6 animate-in delay-1">
+        <img src="images/social-room.jpg" alt="Social Room" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Social & Recreation Room</h3>
+        <p class="text-gray-400 text-sm">An exclusive residents' lounge for entertaining and socializing — an extension of your living space.</p>
+      </div>
+      <div class="amenity-card card-hover p-6 animate-in delay-2">
+        <img src="images/parking.jpg" alt="Covered Parking" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Secure Covered Parking</h3>
+        <p class="text-gray-400 text-sm">Private parking garage keeps your vehicle protected — always a spot waiting for you.</p>
+      </div>
+      <div class="amenity-card card-hover p-6 flex flex-col items-center justify-center text-center animate-in delay-3">
+        <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-4"><i class="fa-solid fa-shield-halved text-gold text-2xl"></i></div>
+        <h3 class="text-white font-semibold text-lg mb-2">24/7 Security</h3>
+        <p class="text-gray-400 text-sm">Controlled access, surveillance, and round-the-clock security staff.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Floor Plans -->
+<section id="floorplans" class="py-24 px-6 bg-surface/50">
+  <div class="max-w-site mx-auto">
+    <div class="text-center mb-16 animate-in">
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Residences</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Floor Plans</h2>
+      <p class="text-gray-400">Choose from a range of thoughtfully designed layouts</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-3 mb-12 animate-in">
+      <button class="fp-tab active" onclick="showPlan('building')">Building Overview</button>
+      <button class="fp-tab" onclick="showPlan('unit1')">Unit 1</button>
+      <button class="fp-tab" onclick="showPlan('unit2')">Unit 2</button>
+      <button class="fp-tab" onclick="showPlan('unit3')">Unit 3</button>
+      <button class="fp-tab" onclick="showPlan('unit4')">Unit 4</button>
+      <button class="fp-tab" onclick="showPlan('unit5')">Unit 5</button>
+      <button class="fp-tab" onclick="showPlan('unit6')">Unit 6</button>
+      <button class="fp-tab" onclick="showPlan('unit7')">Unit 7</button>
+    </div>
+    <div class="max-w-4xl mx-auto">
+      <div id="plan-building" class="fp-panel active animate-in"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="images/floorplan-building.png" alt="Building Floor Plan" class="mx-auto max-h-[500px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit1" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c1.png" alt="Unit 1" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit2" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c2.png" alt="Unit 2" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit3" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c3.png" alt="Unit 3" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit4" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c4.png" alt="Unit 4" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit5" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c5.png" alt="Unit 5" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit6" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c6.png" alt="Unit 6" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+      <div id="plan-unit7" class="fp-panel"><div class="bg-sky/30 border border-gold/10 rounded-xl p-6 text-center"><img src="floorplans/floorplan_r1_c7.png" alt="Unit 7" class="mx-auto max-h-[400px] cursor-pointer" onclick="openLightbox(this)"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Location -->
+<section id="location" class="py-24 px-6">
+  <div class="max-w-site mx-auto grid md:grid-cols-2 gap-16 items-center">
+    <div class="animate-in">
+      <div class="gold-line mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Location</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">The Heart of<br>Miami's Waterfront</h2>
+      <div class="space-y-4 text-gray-400">
+        <div class="flex items-start gap-4"><i class="fa-solid fa-location-dot text-gold mt-1"></i><div><p class="text-white font-semibold">425 NE 22nd Street</p><p>Miami, FL 33137 — Edgewater</p></div></div>
+        <div class="flex items-start gap-4"><i class="fa-solid fa-car text-gold mt-1"></i><div><p><span class="text-white">5 min</span> to Downtown Miami</p><p><span class="text-white">10 min</span> to South Beach</p><p><span class="text-white">10 min</span> to Design District</p><p><span class="text-white">20 min</span> to Miami Int'l Airport</p></div></div>
+        <div class="flex items-start gap-4"><i class="fa-solid fa-utensils text-gold mt-1"></i><div><p>Steps from Midtown's dining, Wynwood's galleries, and Brickell's nightlife</p></div></div>
+      </div>
+    </div>
+    <div class="animate-in delay-2">
+      <div class="rounded-xl overflow-hidden shadow-2xl border border-gold/10">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.2!2d-80.1919!3d25.7907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b6a4e4b3c49f%3A0x5a33e44e1eb54d3f!2s425+NE+22nd+St%2C+Miami%2C+FL+33137!5e0!3m2!1sen!2sus!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 px-6 bg-surface/50">
+  <div class="max-w-site mx-auto text-center animate-in">
+    <div class="gold-line mx-auto mb-6"></div>
+    <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Experience 22 Skyview</h2>
+    <p class="text-gray-400 text-lg mb-8 max-w-xl mx-auto">Schedule a personal tour and discover Edgewater's premier waterfront address.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:3055710000" class="px-10 py-4 bg-gold text-sky-dark font-bold rounded-full hover:bg-gold-light transition text-lg pulse-cta">Call (305) 571-0000</a>
+      <a href="brochure.pdf" target="_blank" class="px-10 py-4 border border-gold text-gold font-semibold rounded-full hover:bg-gold hover:text-sky-dark transition text-lg">Download Brochure</a>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-24 px-6">
+  <div class="max-w-site mx-auto grid md:grid-cols-2 gap-16">
+    <div class="animate-in">
+      <div class="gold-line mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Get in Touch</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-8">Schedule Your<br>Personal Tour</h2>
+      <div class="space-y-6">
+        <a href="tel:3055710000" class="flex items-center gap-4 text-lg text-white hover:text-gold transition"><div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center"><i class="fa-solid fa-phone text-gold"></i></div>(305) 571-0000</a>
+        <a href="mailto:info@22skyview.com" class="flex items-center gap-4 text-lg text-white hover:text-gold transition"><div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center"><i class="fa-solid fa-envelope text-gold"></i></div>info@22skyview.com</a>
+        <div class="flex items-center gap-4 text-lg"><div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center"><i class="fa-solid fa-location-dot text-gold"></i></div><div><p class="text-white">425 NE 22nd Street</p><p class="text-gray-400">Miami, FL 33137</p></div></div>
+      </div>
+    </div>
+    <div class="animate-in delay-2">
+      <form class="bg-sky/50 border border-gold/10 rounded-xl p-8 space-y-5" onsubmit="handleContact(event)">
+        <h3 class="text-white font-semibold text-lg mb-2">Request Information</h3>
+        <input type="text" placeholder="Your Name *" required class="w-full bg-sky-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-gold focus:outline-none transition">
+        <input type="email" placeholder="Email Address *" required class="w-full bg-sky-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-gold focus:outline-none transition">
+        <input type="tel" placeholder="Phone Number" class="w-full bg-sky-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-gold focus:outline-none transition">
+        <select class="w-full bg-sky-dark/50 border border-white/10 rounded-lg px-4 py-3 text-gray-400 focus:border-gold focus:outline-none transition">
+          <option>I'm interested in...</option><option>Studio</option><option>1 Bedroom</option><option>2 Bedrooms</option><option>General Information</option>
+        </select>
+        <textarea placeholder="Additional Message" rows="3" class="w-full bg-sky-dark/50 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:border-gold focus:outline-none transition resize-none"></textarea>
+        <button type="submit" class="w-full py-3.5 bg-gold text-sky-dark font-bold rounded-full hover:bg-gold-light transition text-lg">Send Request</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-12 px-6 border-t border-white/5">
+  <div class="max-w-site mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <div class="text-center md:text-left">
+      <img src="images/logo.png" alt="22 Skyview" class="h-8 mb-3 mx-auto md:mx-0">
+      <p class="text-gray-500 text-sm">425 NE 22nd Street, Miami FL 33137 · (305) 571-0000</p>
+      <p class="text-gray-600 text-xs mt-2">© <span id="year"></span> Melo Group. All Rights Reserved.</p>
+    </div>
+    <div class="flex items-center gap-4">
+      <a href="https://facebook.com/22Skyview/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold/20 hover:text-gold transition text-gray-400"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://twitter.com/22Skyview/" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold/20 hover:text-gold transition text-gray-400"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="http://www.linkedin.com/company/22-skyview" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-gold/20 hover:text-gold transition text-gray-400"><i class="fa-brands fa-linkedin-in"></i></a>
+    </div>
+    <p class="text-gray-600 text-xs">Website by <a href="https://crrelabs.com" class="text-gray-500 hover:text-gold transition">CRRE Labs</a></p>
+  </div>
+</footer>
+
+<!-- Mobile Phone Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-gold p-3 text-center hidden mobile-phone-bar md:hidden">
+  <a href="tel:3055710000" class="text-sky-dark font-bold text-lg tracking-wider flex items-center justify-center gap-2"><i class="fa-solid fa-phone"></i> Call (305) 571-0000</a>
+</div>
+
+<!-- Lightbox -->
+<div id="lightbox" class="lightbox" onclick="closeLightbox()">
+  <button class="absolute top-6 right-6 text-white text-3xl hover:text-gold transition z-10">&times;</button>
+  <img id="lbImg" src="" alt="">
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 60); });
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  menuBtn.innerHTML = mobileMenu.classList.contains('open') ? '<i class="fa-solid fa-xmark"></i>' : '<i class="fa-solid fa-bars"></i>';
+});
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
+const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
+function showPlan(id) { document.querySelectorAll('.fp-panel').forEach(p => p.classList.remove('active')); document.querySelectorAll('.fp-tab').forEach(t => t.classList.remove('active')); document.getElementById('plan-' + id).classList.add('active'); event.target.classList.add('active'); }
+function openLightbox(el) { const img = el.tagName === 'IMG' ? el : el.querySelector('img'); if (!img) return; document.getElementById('lbImg').src = img.src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+function handleContact(e) { e.preventDefault(); const name = e.target.querySelector('input[type="text"]').value; window.location.href = 'mailto:info@22skyview.com?subject=Tour Request from ' + encodeURIComponent(name) + '&body=' + encodeURIComponent('I would like to schedule a tour at 22 Skyview.'); }
+</script>
+</body>
+</html>
