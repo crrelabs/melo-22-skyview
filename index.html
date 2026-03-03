@@ -107,11 +107,11 @@ tailwind.config = {
       </div>
     </div>
     </div>
-    <div class="flex justify-center items-end mt-8 md:mt-0 self-end">
+    <div class="flex justify-center items-end mt-8 md:mt-0 self-end -mb-1">
       <img src="images/building-rendering.png" alt="22 Skyview Building" class="max-h-[250px] md:max-h-[70vh] drop-shadow-2xl animate-in delay-2 object-bottom">
     </div>
   </div>
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"><i class="fa-solid fa-chevron-down text-gold/60 text-xl"></i></div>
+  
 </section>
 
 <!-- About -->
@@ -147,18 +147,18 @@ tailwind.config = {
       <p class="text-gray-400 max-w-2xl mx-auto">From every floor, 22 Skyview delivers sweeping panoramic views of Biscayne Bay, the city skyline, and beyond.</p>
     </div>
     <div class="space-y-6">
-      <div class="gallery-item cursor-pointer animate-in delay-1" onclick="openLightbox(this)">
-        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-southwest.jpg" alt="Southwest View" class="w-full h-full object-cover">
+      <div class="gallery-item cursor-pointer relative z-10 animate-in delay-1" >
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-southwest.jpg" onclick="event.stopPropagation();openLB(this)" alt="Southwest View" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">Southwest — Downtown &amp; Brickell Skyline</p></div></div>
         </div>
       </div>
-      <div class="gallery-item cursor-pointer animate-in delay-2" onclick="openLightbox(this)">
-        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-east.jpg" alt="East View" class="w-full h-full object-cover">
+      <div class="gallery-item cursor-pointer relative z-10 animate-in delay-2" >
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-east.jpg" onclick="event.stopPropagation();openLB(this)" alt="East View" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">East — Biscayne Bay &amp; Miami Beach</p></div></div>
         </div>
       </div>
-      <div class="gallery-item cursor-pointer animate-in delay-3" onclick="openLightbox(this)">
-        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-northwest.jpg" alt="Northwest View" class="w-full h-full object-cover">
+      <div class="gallery-item cursor-pointer relative z-10 animate-in delay-3" >
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-northwest.jpg" onclick="event.stopPropagation();openLB(this)" alt="Northwest View" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">Northwest — Edgewater &amp; Upper Bay</p></div></div>
         </div>
       </div>
@@ -221,7 +221,7 @@ tailwind.config = {
     </div>
     <div class="max-w-4xl mx-auto animate-in">
       <div class="bg-sky/30 border border-gold/10 rounded-xl p-4 md:p-8 text-center">
-        <img src="images/floorplan-building.png" alt="22 Skyview Floor Plans" class="mx-auto w-full max-h-[600px] object-contain cursor-pointer" onclick="openLightbox(this)">
+        <img src="images/floorplan-building.png" alt="22 Skyview Floor Plans" class="mx-auto w-full max-h-[600px] object-contain cursor-pointer" onclick="event.stopPropagation();openLB(this)">
         <p class="text-gray-500 text-sm mt-4">Tap to enlarge</p>
       </div>
     </div>
@@ -332,7 +332,7 @@ menuBtn.addEventListener('click', () => {
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
 document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-function openLightbox(el) { event.stopPropagation(); const img = el.tagName === "IMG" ? el : el.querySelector("img"); if (!img) return; document.getElementById("lbImg").src = img.src; document.getElementById("lightbox").classList.add("active"); document.body.style.overflow = "hidden"; }
+function openLB(el) { var src = el.tagName === "IMG" ? el.src : el.querySelector("img").src; document.getElementById("lbImg").src = src; document.getElementById("lightbox").classList.add("active"); document.body.style.overflow = "hidden"; }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function handleContact(e) { e.preventDefault(); const name = e.target.querySelector('input[type="text"]').value; window.location.href = 'mailto:info@22skyview.com?subject=Tour Request from ' + encodeURIComponent(name) + '&body=' + encodeURIComponent('I would like to schedule a tour at 22 Skyview.'); }
