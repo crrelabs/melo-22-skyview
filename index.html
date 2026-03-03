@@ -94,8 +94,9 @@ tailwind.config = {
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
   <img src="images/hero-skyline.jpg" alt="Biscayne Bay Views" class="absolute inset-0 w-full h-full object-cover" style="object-position: center 30%;">
   <div class="hero-overlay absolute inset-0"></div>
-  <div class="max-w-site mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-center w-full pt-24 pb-16">
+  <div class="max-w-site mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-end w-full pt-24 pb-0">
     <div>
+    <div class="pb-12 md:pb-20">
       <div class="gold-line mb-6 animate-in"></div>
       <h1 class="font-display text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6 animate-in delay-1">Breathtaking Bay Views in Edgewater</h1>
       <p class="text-xl text-gray-300 font-light mb-4 animate-in delay-2">Luxury apartments with panoramic Biscayne Bay, city skyline, and ocean views — minutes from Downtown Miami and South Beach.</p>
@@ -105,8 +106,9 @@ tailwind.config = {
         <a href="#views" class="px-8 py-3.5 border border-white/20 text-white rounded-full hover:border-gold hover:text-gold transition text-center">Explore Views</a>
       </div>
     </div>
-    <div class="flex justify-center mt-8 md:mt-0">
-      <img src="images/building-rendering.png" alt="22 Skyview Building" class="max-h-[300px] md:max-h-[500px] drop-shadow-2xl animate-in delay-2">
+    </div>
+    <div class="flex justify-center items-end mt-8 md:mt-0 self-end">
+      <img src="images/building-rendering.png" alt="22 Skyview Building" class="max-h-[250px] md:max-h-[70vh] drop-shadow-2xl animate-in delay-2 object-bottom">
     </div>
   </div>
   <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"><i class="fa-solid fa-chevron-down text-gold/60 text-xl"></i></div>
