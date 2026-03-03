@@ -149,17 +149,17 @@ tailwind.config = {
     <div class="space-y-6">
       <div class="gallery-item cursor-pointer animate-in delay-1" onclick="openLightbox(this)">
         <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-southwest.jpg" alt="Southwest View" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Southwest — Downtown &amp; Brickell Skyline</p></div></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">Southwest — Downtown &amp; Brickell Skyline</p></div></div>
         </div>
       </div>
       <div class="gallery-item cursor-pointer animate-in delay-2" onclick="openLightbox(this)">
         <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-east.jpg" alt="East View" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">East — Biscayne Bay &amp; Miami Beach</p></div></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">East — Biscayne Bay &amp; Miami Beach</p></div></div>
         </div>
       </div>
       <div class="gallery-item cursor-pointer animate-in delay-3" onclick="openLightbox(this)">
         <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-northwest.jpg" alt="Northwest View" class="w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6"><div><p class="text-gold font-display text-lg font-semibold">Northwest — Edgewater &amp; Upper Bay</p></div></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">Northwest — Edgewater &amp; Upper Bay</p></div></div>
         </div>
       </div>
     </div>
@@ -332,7 +332,7 @@ menuBtn.addEventListener('click', () => {
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
 document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-function openLightbox(el) { const img = el.tagName === 'IMG' ? el : el.querySelector('img'); if (!img) return; document.getElementById('lbImg').src = img.src; document.getElementById('lightbox').classList.add('active'); document.body.style.overflow = 'hidden'; }
+function openLightbox(el) { event.stopPropagation(); const img = el.tagName === "IMG" ? el : el.querySelector("img"); if (!img) return; document.getElementById("lbImg").src = img.src; document.getElementById("lightbox").classList.add("active"); document.body.style.overflow = "hidden"; }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 function handleContact(e) { e.preventDefault(); const name = e.target.querySelector('input[type="text"]').value; window.location.href = 'mailto:info@22skyview.com?subject=Tour Request from ' + encodeURIComponent(name) + '&body=' + encodeURIComponent('I would like to schedule a tour at 22 Skyview.'); }
