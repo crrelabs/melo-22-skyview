@@ -32,7 +32,9 @@ tailwind.config = {
   .font-display { font-family: 'Cormorant Garamond', serif; }
   header { transition: all 0.4s ease; padding-top: 1.25rem; padding-bottom: 1.25rem; }
   header.scrolled { padding-top: 0.75rem; padding-bottom: 0.75rem; background: rgba(10,22,40,0.97); backdrop-filter: blur(16px); box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
-  .animate-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .animate-in { opacity: 1; transform: translateY(0); }
+  .js-animate .animate-in { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .js-animate .animate-in.visible { opacity: 1; transform: translateY(0); }
   .animate-in.visible { opacity: 1; transform: translateY(0); }
   .animate-in.delay-1 { transition-delay: 0.1s; }
   .animate-in.delay-2 { transition-delay: 0.2s; }
@@ -94,7 +96,7 @@ tailwind.config = {
 <section id="home" class="relative min-h-screen flex items-center overflow-hidden">
   <img src="images/hero-skyline.jpg" alt="Biscayne Bay Views" class="absolute inset-0 w-full h-full object-cover" style="object-position: center 30%;">
   <div class="hero-overlay absolute inset-0"></div>
-  <div class="max-w-site mx-auto px-6 relative z-10 grid md:grid-cols-2 gap-12 items-end w-full pt-24 pb-0">
+  <div class="max-w-site mx-auto px-6 relative z-10 w-full pt-24 pb-20">
     <div>
     <div class="pb-12 md:pb-20">
       <div class="gold-line mb-6 animate-in"></div>
@@ -107,8 +109,8 @@ tailwind.config = {
       </div>
     </div>
     </div>
-    <div class="flex justify-center items-end mt-8 md:mt-0 self-end -mb-1">
-      <img src="images/building-rendering.png" alt="22 Skyview Building" class="max-h-[250px] md:max-h-[70vh] drop-shadow-2xl animate-in delay-2 object-bottom">
+    <div class="hidden md:block absolute bottom-0 right-0 md:right-[5%] lg:right-[10%] z-10">
+      <img src="images/building-rendering.png" alt="22 Skyview Building" class="h-[65vh] max-h-[550px] drop-shadow-2xl object-bottom">
     </div>
   </div>
   
@@ -148,17 +150,17 @@ tailwind.config = {
     </div>
     <div class="space-y-6">
       <div class="gallery-item cursor-pointer relative z-10 animate-in delay-1" >
-        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-southwest.jpg" onclick="event.stopPropagation();openLB(this)" alt="Southwest View" class="w-full h-full object-cover">
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-southwest.jpg" alt="Southwest View" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">Southwest — Downtown &amp; Brickell Skyline</p></div></div>
         </div>
       </div>
       <div class="gallery-item cursor-pointer relative z-10 animate-in delay-2" >
-        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-east.jpg" onclick="event.stopPropagation();openLB(this)" alt="East View" class="w-full h-full object-cover">
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-east.jpg" alt="East View" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">East — Biscayne Bay &amp; Miami Beach</p></div></div>
         </div>
       </div>
       <div class="gallery-item cursor-pointer relative z-10 animate-in delay-3" >
-        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-northwest.jpg" onclick="event.stopPropagation();openLB(this)" alt="Northwest View" class="w-full h-full object-cover">
+        <div class="relative h-48 md:h-72 rounded-xl overflow-hidden"><img src="images/view-northwest.jpg" alt="Northwest View" class="w-full h-full object-cover">
           <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-6 pointer-events-none"><div><p class="text-gold font-display text-lg font-semibold">Northwest — Edgewater &amp; Upper Bay</p></div></div>
         </div>
       </div>
@@ -221,7 +223,7 @@ tailwind.config = {
     </div>
     <div class="max-w-4xl mx-auto animate-in">
       <div class="bg-sky/30 border border-gold/10 rounded-xl p-4 md:p-8 text-center">
-        <img src="images/floorplan-building.png" alt="22 Skyview Floor Plans" class="mx-auto w-full max-h-[600px] object-contain cursor-pointer" onclick="event.stopPropagation();openLB(this)">
+        <img src="images/floorplan-building.png" alt="22 Skyview Floor Plans" class="mx-auto w-full max-h-[600px] object-contain cursor-pointer lb-click">
         <p class="text-gray-500 text-sm mt-4">Tap to enlarge</p>
       </div>
     </div>
@@ -331,10 +333,33 @@ menuBtn.addEventListener('click', () => {
 });
 mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { mobileMenu.classList.remove('open'); menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>'; }));
 const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1 });
+document.body.classList.add('js-animate');
 document.querySelectorAll('.animate-in').forEach(el => observer.observe(el));
-function openLB(el) { var src = el.tagName === "IMG" ? el.src : el.querySelector("img").src; document.getElementById("lbImg").src = src; document.getElementById("lightbox").classList.add("active"); document.body.style.overflow = "hidden"; }
-function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); document.body.style.overflow = ''; }
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+// Lightbox
+var lb = document.getElementById('lightbox');
+var lbImg = document.getElementById('lbImg');
+function openLB(e) {
+  e = e || window.event;
+  if (e.stopPropagation) e.stopPropagation();
+  if (e.preventDefault) e.preventDefault();
+  var el = e.currentTarget || e.target;
+  var src = el.tagName === 'IMG' ? el.src : (el.querySelector('img') || {}).src;
+  if (!src) return;
+  lbImg.src = src;
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  return false;
+}
+function closeLightbox() { lb.classList.remove('active'); document.body.style.overflow = ''; }
+lb.addEventListener('click', closeLightbox);
+document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
+
+// Attach lightbox to all clickable images
+document.querySelectorAll('.gallery-item img, .lb-click').forEach(function(img) {
+  img.style.cursor = 'pointer';
+  img.addEventListener('click', openLB);
+  img.addEventListener('touchend', function(e) { e.preventDefault(); openLB(e); });
+});
 function handleContact(e) { e.preventDefault(); const name = e.target.querySelector('input[type="text"]').value; window.location.href = 'mailto:info@22skyview.com?subject=Tour Request from ' + encodeURIComponent(name) + '&body=' + encodeURIComponent('I would like to schedule a tour at 22 Skyview.'); }
 </script>
 </body>
