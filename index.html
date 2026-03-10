@@ -40,7 +40,7 @@ tailwind.config = {
   .animate-in.delay-2 { transition-delay: 0.2s; }
   .animate-in.delay-3 { transition-delay: 0.3s; }
   .animate-in.delay-4 { transition-delay: 0.4s; }
-  .hero-overlay { background: linear-gradient(135deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.4) 50%, rgba(10,22,40,0.7) 100%); }
+  .hero-overlay { background: linear-gradient(135deg, rgba(10,22,40,0.9) 0%, rgba(10,22,40,0.55) 50%, rgba(10,22,40,0.75) 100%); }
   .card-hover { transition: transform 0.4s ease, box-shadow 0.4s ease; }
   .card-hover:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(201,169,110,0.12); }
   .gold-line { width: 60px; height: 2px; background: linear-gradient(90deg, #c9a96e, #d4bb8a); }
@@ -72,7 +72,7 @@ tailwind.config = {
       <a href="#about" class="text-white/90 hover:text-gold transition">About</a>
       <a href="#views" class="text-white/90 hover:text-gold transition">Views</a>
       <a href="#amenities" class="text-white/90 hover:text-gold transition">Amenities</a>
-      <a href="#floorplans" class="text-white/90 hover:text-gold transition">Floor Plans</a>
+      <a href="#location" class="text-white/90 hover:text-gold transition">Location</a>
       <a href="#contact" class="text-white/90 hover:text-gold transition">Contact</a>
       <a href="brochure.pdf" target="_blank" class="px-5 py-2 border border-gold text-gold hover:bg-gold hover:text-sky-dark rounded-full transition text-sm font-semibold">Brochure</a>
     </nav>
@@ -82,7 +82,7 @@ tailwind.config = {
     <a href="#about" class="block text-white/90 hover:text-gold py-2">About</a>
     <a href="#views" class="block text-white/90 hover:text-gold py-2">Views</a>
     <a href="#amenities" class="block text-white/90 hover:text-gold py-2">Amenities</a>
-    <a href="#floorplans" class="block text-white/90 hover:text-gold py-2">Floor Plans</a>
+    <a href="#location" class="block text-white/90 hover:text-gold py-2">Location</a>
     <a href="#contact" class="block text-white/90 hover:text-gold py-2">Contact</a>
     <a href="brochure.pdf" target="_blank" class="block text-gold font-semibold py-2">Download Brochure</a>
     <div class="border-t border-white/10 pt-4 space-y-2">
@@ -111,7 +111,7 @@ tailwind.config = {
   </div>
   <!-- Building anchored to bottom right -->
   <div class="absolute bottom-0 right-[-5%] md:right-[8%] z-10 pointer-events-none" style="line-height:0;">
-    <img src="images/building-rendering.png" alt="22 Skyview Building" class="h-[85vh] md:h-[70vh] max-h-[600px] drop-shadow-2xl opacity-40 md:opacity-100" style="display:block;">
+    <img src="images/building-rendering.png" alt="22 Skyview Building" class="h-[85vh] md:h-[70vh] max-h-[600px] drop-shadow-2xl" style="display:block;">
   </div>
 </section>
 
@@ -131,7 +131,7 @@ tailwind.config = {
       </div>
     </div>
     <div class="animate-in delay-2 relative">
-      <img src="images/panoramic.jpg" alt="Panoramic Bay View" class="rounded-xl shadow-2xl w-full">
+      <img src="images/miami-skyline.jpg" alt="Panoramic Bay View" class="rounded-xl shadow-2xl w-full">
     </div>
   </div>
 </section>
@@ -210,43 +210,75 @@ tailwind.config = {
 </section>
 
 <!-- Floor Plans -->
-<section id="floorplans" class="py-24 px-6 bg-surface/50">
+<section id="location" class="py-24 px-6 bg-surface/50">
   <div class="max-w-site mx-auto">
     <div class="text-center mb-16 animate-in">
       <div class="gold-line mx-auto mb-6"></div>
-      <p class="text-gold font-display italic text-lg mb-2">Residences</p>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Floor Plans</h2>
-      <p class="text-gray-400">Thoughtfully designed layouts with stunning views from every unit</p>
+      <p class="text-gold font-display italic text-lg mb-2">Prime Location</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">The Heart of Miami's Waterfront</h2>
+      <p class="text-gray-400 max-w-3xl mx-auto text-lg">In real estate, it's all about location — and 22 Skyview delivers beaches, city life, and recreation right outside your front door. Situated in Edgewater, the fastest growing area of Midtown, you'll enjoy everything Miami has to offer year-round.</p>
     </div>
-    <div class="max-w-4xl mx-auto animate-in">
-      <div class="bg-sky/30 border border-gold/10 rounded-xl p-4 md:p-8 text-center">
-        <img src="images/floorplan-building.png" alt="22 Skyview Floor Plans" class="mx-auto w-full max-h-[600px] object-contain cursor-pointer lb-click">
-        <p class="text-gray-500 text-sm mt-4">Tap to enlarge</p>
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div class="animate-in">
+        <div class="flex gap-4 overflow-x-auto pb-4">
+          <img src="images/map.png" alt="22 Skyview Location Map" class="rounded-xl border border-gold/10 max-h-[500px] cursor-pointer" onclick="event.stopPropagation();openLB(event)">
+          <img src="images/map-legend.png" alt="Map Legend" class="rounded-xl border border-gold/10 max-h-[500px]">
+        </div>
+      </div>
+      <div class="animate-in delay-2 space-y-6">
+        <div class="space-y-4">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center flex-shrink-0 mt-1">
+              <i class="fa-solid fa-location-dot text-gold text-sm"></i>
+            </div>
+            <div>
+              <p class="text-white font-semibold">425 NE 22nd Street</p>
+              <p class="text-gray-400">Miami, FL 33137 — Edgewater / Midtown</p>
+            </div>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="amenity-card p-4 text-center">
+            <i class="fa-solid fa-umbrella-beach text-gold text-xl mb-2"></i>
+            <p class="text-white text-sm font-semibold">South Beach</p>
+            <p class="text-gray-500 text-xs">10 min drive</p>
+          </div>
+          <div class="amenity-card p-4 text-center">
+            <i class="fa-solid fa-city text-gold text-xl mb-2"></i>
+            <p class="text-white text-sm font-semibold">Downtown Miami</p>
+            <p class="text-gray-500 text-xs">5 min drive</p>
+          </div>
+          <div class="amenity-card p-4 text-center">
+            <i class="fa-solid fa-bag-shopping text-gold text-xl mb-2"></i>
+            <p class="text-white text-sm font-semibold">Design District</p>
+            <p class="text-gray-500 text-xs">10 min drive</p>
+          </div>
+          <div class="amenity-card p-4 text-center">
+            <i class="fa-solid fa-plane text-gold text-xl mb-2"></i>
+            <p class="text-white text-sm font-semibold">MIA Airport</p>
+            <p class="text-gray-500 text-xs">20 min drive</p>
+          </div>
+          <div class="amenity-card p-4 text-center">
+            <i class="fa-solid fa-palette text-gold text-xl mb-2"></i>
+            <p class="text-white text-sm font-semibold">Wynwood</p>
+            <p class="text-gray-500 text-xs">5 min drive</p>
+          </div>
+          <div class="amenity-card p-4 text-center">
+            <i class="fa-solid fa-utensils text-gold text-xl mb-2"></i>
+            <p class="text-white text-sm font-semibold">Midtown Dining</p>
+            <p class="text-gray-500 text-xs">Walking distance</p>
+          </div>
+        </div>
+        <div class="rounded-xl overflow-hidden border border-gold/10 mt-4">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.2!2d-80.1919!3d25.7907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b6a4e4b3c49f%3A0x5a33e44e1eb54d3f!2s425+NE+22nd+St%2C+Miami%2C+FL+33137!5e0!3m2!1sen!2sus!4v1" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- Location -->
-<section id="location" class="py-24 px-6">
-  <div class="max-w-site mx-auto grid md:grid-cols-2 gap-16 items-center">
-    <div class="animate-in">
-      <div class="gold-line mb-6"></div>
-      <p class="text-gold font-display italic text-lg mb-2">Location</p>
-      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-8 leading-tight">The Heart of<br>Miami's Waterfront</h2>
-      <div class="space-y-4 text-gray-400">
-        <div class="flex items-start gap-4"><i class="fa-solid fa-location-dot text-gold mt-1"></i><div><p class="text-white font-semibold">425 NE 22nd Street</p><p>Miami, FL 33137 — Edgewater</p></div></div>
-        <div class="flex items-start gap-4"><i class="fa-solid fa-car text-gold mt-1"></i><div><p><span class="text-white">5 min</span> to Downtown Miami</p><p><span class="text-white">10 min</span> to South Beach</p><p><span class="text-white">10 min</span> to Design District</p><p><span class="text-white">20 min</span> to Miami Int'l Airport</p></div></div>
-        <div class="flex items-start gap-4"><i class="fa-solid fa-utensils text-gold mt-1"></i><div><p>Steps from Midtown's dining, Wynwood's galleries, and Brickell's nightlife</p></div></div>
-      </div>
-    </div>
-    <div class="animate-in delay-2">
-      <div class="rounded-xl overflow-hidden shadow-2xl border border-gold/10">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3592.2!2d-80.1919!3d25.7907!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9b6a4e4b3c49f%3A0x5a33e44e1eb54d3f!2s425+NE+22nd+St%2C+Miami%2C+FL+33137!5e0!3m2!1sen!2sus!4v1" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- CTA -->
 <section class="py-20 px-6 bg-surface/50">
