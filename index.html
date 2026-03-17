@@ -71,6 +71,7 @@ tailwind.config = {
     <nav class="hidden md:flex items-center gap-6 text-sm tracking-wide">
       <a href="#about" class="text-white/90 hover:text-gold transition">About</a>
       <a href="#views" class="text-white/90 hover:text-gold transition">Views</a>
+      <a href="#gallery" class="text-white/90 hover:text-gold transition">Gallery</a>
       <a href="#amenities" class="text-white/90 hover:text-gold transition">Amenities</a>
       <a href="#floorplans" class="text-white/90 hover:text-gold transition">Floor Plans</a>
       <a href="#location" class="text-white/90 hover:text-gold transition">Location</a>
@@ -82,6 +83,7 @@ tailwind.config = {
   <div id="mobileMenu" class="mobile-menu md:hidden bg-sky-dark/95 backdrop-blur-md mx-4 mt-2 rounded-xl p-6 space-y-4 text-center">
     <a href="#about" class="block text-white/90 hover:text-gold py-2">About</a>
     <a href="#views" class="block text-white/90 hover:text-gold py-2">Views</a>
+    <a href="#gallery" class="block text-white/90 hover:text-gold py-2">Gallery</a>
     <a href="#amenities" class="block text-white/90 hover:text-gold py-2">Amenities</a>
     <a href="#floorplans" class="block text-white/90 hover:text-gold py-2">Floor Plans</a>
     <a href="#location" class="block text-white/90 hover:text-gold py-2">Location</a>
@@ -133,7 +135,7 @@ tailwind.config = {
       </div>
     </div>
     <div class="animate-in delay-2 relative">
-      <img src="images/miami-skyline.jpg" alt="Panoramic Bay View" class="rounded-xl shadow-2xl w-full">
+      <img src="images/view-bay.jpg" alt="Panoramic Bay View" class="rounded-xl shadow-2xl w-full">
     </div>
   </div>
 </section>
@@ -167,6 +169,33 @@ tailwind.config = {
   </div>
 </section>
 
+
+<!-- Photo Gallery -->
+<section id="gallery" class="py-24 px-6 bg-midnight">
+  <div class="max-w-site mx-auto">
+    <div class="text-center mb-16 animate-in">
+      <div class="gold-line mx-auto mb-6"></div>
+      <p class="text-gold font-display italic text-lg mb-2">Gallery</p>
+      <h2 class="font-display text-4xl md:text-5xl font-bold text-white mb-4">Photo Gallery</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto">Real photos of 22 Skyview — from the grand lobby to the rooftop pool deck.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-1"><img src="images/gallery-lobby-desk.jpg" alt="Lobby Reception" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-2"><img src="images/lobby.jpg" alt="Grand Lobby" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-3"><img src="images/lobby-2.jpg" alt="Lobby Elevators" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-1"><img src="images/gallery-lobby-lounge.jpg" alt="Lobby Lounge" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-2"><img src="images/gallery-lounge.jpg" alt="Residents Lounge" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-3"><img src="images/pool.jpg" alt="Rooftop Pool" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-1"><img src="images/gallery-pool-2.jpg" alt="Pool Deck" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-2"><img src="images/gym.jpg" alt="Fitness Center" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-3"><img src="images/view-bay.jpg" alt="Bay View" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-1"><img src="images/view-kitchen.jpg" alt="Kitchen" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-2"><img src="images/view-interior.jpg" alt="Living Area" class="lb-click"></div>
+      <div class="gallery-item rounded-xl overflow-hidden h-48 animate-in delay-3"><img src="images/exterior-building.jpg" alt="Building Exterior" class="lb-click"></div>
+    </div>
+  </div>
+</section>
+
 <!-- Amenities -->
 <section id="amenities" class="py-24 px-6">
   <div class="max-w-site mx-auto">
@@ -188,9 +217,9 @@ tailwind.config = {
         <p class="text-gray-400 text-sm">State-of-the-art equipment with strength, cardio, and aerobics options — your personal gym without ever leaving home.</p>
       </div>
       <div class="amenity-card card-hover p-6 animate-in delay-3">
-        <img src="images/sauna.jpg" alt="Sauna & Steam" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-white font-semibold text-lg mb-2">Sauna & Steam Room</h3>
-        <p class="text-gray-400 text-sm">Relax with dry heat sauna and moist steam room — improve circulation and unwind after a long day.</p>
+        <img src="images/lobby.jpg" alt="Grand Lobby" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Grand Lobby</h3>
+        <p class="text-gray-400 text-sm">A stunning double-height lobby with polished marble floors, modern reception desk, and elegant lighting welcomes you home.</p>
       </div>
       <div class="amenity-card card-hover p-6 animate-in delay-1">
         <img src="images/social-room.jpg" alt="Social Room" class="w-full h-40 object-cover rounded-lg mb-4">
@@ -198,9 +227,9 @@ tailwind.config = {
         <p class="text-gray-400 text-sm">An exclusive residents' lounge for entertaining and socializing — an extension of your living space.</p>
       </div>
       <div class="amenity-card card-hover p-6 animate-in delay-2">
-        <img src="images/parking.jpg" alt="Covered Parking" class="w-full h-40 object-cover rounded-lg mb-4">
-        <h3 class="text-white font-semibold text-lg mb-2">Secure Covered Parking</h3>
-        <p class="text-gray-400 text-sm">Private parking garage keeps your vehicle protected — always a spot waiting for you.</p>
+        <img src="images/gallery-lobby-lounge.jpg" alt="Residents Lounge" class="w-full h-40 object-cover rounded-lg mb-4">
+        <h3 class="text-white font-semibold text-lg mb-2">Residents' Lounge</h3>
+        <p class="text-gray-400 text-sm">Elegantly furnished lounge with modern seating and natural light — perfect for relaxing or entertaining guests.</p>
       </div>
       <div class="amenity-card card-hover p-6 flex flex-col items-center justify-center text-center animate-in delay-3">
         <div class="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center mb-4"><i class="fa-solid fa-shield-halved text-gold text-2xl"></i></div>
